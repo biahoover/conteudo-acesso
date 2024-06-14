@@ -36,53 +36,32 @@
     </style>
 </head>
 <body>
-    <div class="thank-you">OBRIGRADO! ♥<br>Você receberá o acesso ao conteúdo no Whatsapp!</br></div>
+    <div class="message">OBRIGRADO! ♥<br>Você receberá o acesso ao conteúdo no Whatsapp!</div>
     <script>
-        // Pixel do Facebook
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window,document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
+        document.addEventListener("DOMContentLoaded", function() {
+            // Pixel do Facebook
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
 
-        fbq('init', '951503763143037');
-        fbq('track', 'PageView_Clientes');
-
-        // Função para definir um cookie
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-
-        // Função para obter um cookie
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        // Verifica se o evento de compra já foi registrado para este dispositivo
-        const purchaseEventRegistered = getCookie('purchaseEventRegistered');
-
-        if (!purchaseEventRegistered) {
+            fbq('init', '951503763143037');
             fbq('track', 'Purchase');
 
-            // Marca o evento de compra como registrado
-            setCookie('purchaseEventRegistered', 'true', 365); // Valido por 1 ano
-        }
+            // Redireciona após garantir que o Pixel foi carregado
+            setTimeout(function() {
+                window.location.href = "https://t.me/BiaHoover";
+            }, 5000);  // Redireciona após 5 segundos
+        });
     </script>
+    <noscript>
+              <img height="1" width="1" style="display:none"
+              src="https://www.facebook.com/tr?id951503763143037&ev=Purchase&noscript=1"/>
+</noscript>
 </body>
 </html>
+
